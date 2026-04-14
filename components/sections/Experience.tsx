@@ -11,7 +11,7 @@ export function ExperienceSection() {
         {experiences.map((exp, i) => (
           <div
             key={exp.company}
-            className="grid gap-x-5 py-5 grid-1 md:grid-cols-[1fr_144px]"
+            className="grid gap-x-5 py-5 grid-1 md:grid-cols-[144px_1fr]"
             style={{
               // gridTemplateColumns: "144px 1fr",
               borderBottom: i < experiences.length - 1 ? "1px solid var(--border)" : "none",
