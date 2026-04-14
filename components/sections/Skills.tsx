@@ -25,7 +25,7 @@ export function Skills() {
   return (
     <section id="skills" className="py-[52px]" style={{ borderTop: "1px solid var(--border)" }}>
       <SectionLabel num="02" label="skills & stack" />
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {groups.map((g) => (
           <div key={g.label}>
             <div
