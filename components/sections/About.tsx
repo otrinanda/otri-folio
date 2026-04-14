@@ -7,7 +7,7 @@ export function About() {
   return (
     <section id="about" className="py-[52px]" style={{ borderTop: "1px solid var(--border)" }}>
       <SectionLabel num="01" label="about" />
-      <div className="grid grid-cols-[1fr_176px] gap-11">
+      <div className="grid grid-1 md:grid-cols-[1fr_176px] gap-11">
         {/* Bio */}
         <div className="text-[14px] leading-[1.8]" style={{ color: "var(--text-muted)" }}>
           <p className="mb-3">
