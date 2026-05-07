@@ -1,23 +1,24 @@
-export function CornerMark({ size = 7 }: { size?: number }) {
-  const base = "absolute border-[var(--border-strong)] border-solid opacity-60";
+export function CornerMark({ size = 7, radius }: { size?: number; radius?: number | string }) {
+  const base = "absolute border-[var(--border-strong)] border-solid opacity-80";
   const s = `${size}px`;
+  const r = radius !== undefined ? (typeof radius === "number" ? `${radius}px` : radius) : undefined;
   return (
     <>
       <span
-        className={`${base} top-[-1px] left-[-1px]`}
-        style={{ width: s, height: s, borderWidth: "1px 0 0 1px" }}
+        className={`${base} -top-px -left-px`}
+        style={{ width: s, height: s, borderWidth: "2px 0 0 2px", borderTopLeftRadius: r }}
       />
       <span
-        className={`${base} top-[-1px] right-[-1px]`}
-        style={{ width: s, height: s, borderWidth: "1px 1px 0 0" }}
+        className={`${base} -top-px -right-px`}
+        style={{ width: s, height: s, borderWidth: "2px 2px 0 0", borderTopRightRadius: r }}
       />
       <span
-        className={`${base} bottom-[-1px] left-[-1px]`}
-        style={{ width: s, height: s, borderWidth: "0 0 1px 1px" }}
+        className={`${base} -bottom-px -left-px`}
+        style={{ width: s, height: s, borderWidth: "0 0 2px 2px", borderBottomLeftRadius: r }}
       />
       <span
-        className={`${base} bottom-[-1px] right-[-1px]`}
-        style={{ width: s, height: s, borderWidth: "0 1px 1px 0" }}
+        className={`${base} -bottom-px -right-px`}
+        style={{ width: s, height: s, borderWidth: "0 2px 2px 0", borderBottomRightRadius: r }}
       />
     </>
   );

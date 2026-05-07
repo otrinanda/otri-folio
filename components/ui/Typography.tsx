@@ -3,31 +3,41 @@
 import { ElementType, ReactNode, HTMLAttributes, createElement } from "react";
 
 /* ── SCALE CONFIG — ubah di sini untuk adjust semua teks sekaligus ── */
+/* ── FLUID TYPOGRAPHY: clamp(mobile, calc(offset + slope*vw), desktop)
+     mobile  = ukuran asal  (< 768px)
+     desktop = ukuran ×1.5  (> 1280px)
+     formula : offset = mobile - slope*768 ; slope = (desktop-mobile)/512
+   ── */
 const SCALE = {
   heading: {
-    h1: { size: "44px", lineHeight: "1.1",  letterSpacing: "-0.025em" },
-    h2: { size: "28px", lineHeight: "1.2",  letterSpacing: "-0.02em"  },
-    h3: { size: "20px", lineHeight: "1.3",  letterSpacing: "-0.01em"  },
+    h1: { size: "clamp(40px, calc(10px + 3.906vw), 60px)", lineHeight: "1.1",  letterSpacing: "0.025em" },
+    h2: { size: "clamp(32px, calc(8px + 3.125vw), 48px)",  lineHeight: "1.2",  letterSpacing: "0.02em"  },
+    h3: { size: "clamp(24px, calc(6px + 2.344vw), 36px)",  lineHeight: "1.3",  letterSpacing: "0.01em"  },
   },
   body: {
-    lg: { size: "20px", lineHeight: "1.8",  letterSpacing: "0"        },
-    md: { size: "16px", lineHeight: "1.75", letterSpacing: "0"        },
-    sm: { size: "12px", lineHeight: "1.7",  letterSpacing: "0"        },
+    xl: { size: "clamp(24px, calc(6px + 2.344vw), 36px)",  lineHeight: "1.8",  letterSpacing: "0"        },
+    lg: { size: "clamp(20px, calc(5px + 1.953vw), 30px)",  lineHeight: "1.8",  letterSpacing: "0"        },
+    md: { size: "clamp(16px, calc(4px + 1.563vw), 24px)",  lineHeight: "1.75", letterSpacing: "0"        },
+    sm: { size: "clamp(13px, calc(2.5px + 1.367vw), 20px)", lineHeight: "1.7", letterSpacing: "0"        },
   },
   label: {
-    md: { size: "14px", lineHeight: "1.5",  letterSpacing: "0.08em"   },
-    sm: { size: "10px", lineHeight: "1.5",  letterSpacing: "0.1em"    },
+    lg: { size: "clamp(16px, calc(4px + 1.563vw), 24px)",  lineHeight: "1.5",  letterSpacing: "0.08em"   },
+    md: { size: "clamp(14px, calc(3.5px + 1.367vw), 21px)", lineHeight: "1.5", letterSpacing: "0.08em"   },
+    sm: { size: "clamp(11px, calc(2px + 1.172vw), 17px)",  lineHeight: "1.5",  letterSpacing: "0.1em"    },
   },
   mono: {
-    md: { size: "13px", lineHeight: "1.65", letterSpacing: "0.04em"   },
-    sm: { size: "11px", lineHeight: "1.6",  letterSpacing: "0.06em"   },
+    xl: { size: "clamp(20px, calc(5px + 1.953vw), 30px)",  lineHeight: "1.65", letterSpacing: "0.04em"   },
+    lg: { size: "clamp(16px, calc(4px + 1.563vw), 24px)",  lineHeight: "1.65", letterSpacing: "0.04em"   },
+    md: { size: "clamp(14px, calc(3.5px + 1.367vw), 21px)", lineHeight: "1.65", letterSpacing: "0.04em"  },
+    sm: { size: "clamp(11px, calc(2px + 1.172vw), 17px)",  lineHeight: "1.6",  letterSpacing: "0.06em"   },
   },
 } as const;
 
 /* ── WEIGHT MAP ── */
 const WEIGHT_MAP = {
-  normal: "400",
-  medium: "500",
+  normal:   "400",
+  medium:   "500",
+  semibold: "600",
 } as const;
 
 /* ── DEFAULT TAG per variant + size ── */
@@ -57,12 +67,6 @@ function getColor(muted?: boolean, dim?: boolean): string {
   if (dim)   return "var(--text-dim)";
   if (muted) return "var(--text-muted)";
   return "var(--text)";
-}
-
-/* ── UPPERCASE for label ── */
-function getTextTransform(variant: Variant): string {
-  if (variant === "label") return "uppercase";
-  return "none";
 }
 
 /* ── TYPES ── */
@@ -111,7 +115,6 @@ export function Typography<V extends Variant>({
     fontWeight:    WEIGHT_MAP[weight],
     fontFamily:    getFontFamily(variant),
     color:         getColor(muted, dim),
-    textTransform: getTextTransform(variant) as React.CSSProperties["textTransform"],
     ...style,
   };
 

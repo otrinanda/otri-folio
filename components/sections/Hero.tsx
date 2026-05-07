@@ -5,14 +5,14 @@ import { GridBackground } from "@/components/ui/GridBackground";
 import { DimLine } from "@/components/ui/DimLine";
 import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "../ui/button";
-import { IconHome } from "@tabler/icons-react";
 import { Typography } from "../ui/Typography";
 import { CornerMark } from "../ui/CornerMark";
+import { Separator } from "../ui/Separator";
 
 export function Hero() {
   return (
     <div
-      className="relative overflow-hidden"
+      className="relative overflow-hidden md:h-[95vh]"
       style={{ background: "var(--mat)" }}
     >
       <GridBackground />
@@ -26,7 +26,7 @@ export function Hero() {
         }}
       />
 
-      <div className="relative z-3 max-w-215 mx-auto px-8">
+      <div className="relative z-3 max-w-360 mx-auto px-8">
         <Navbar />
         {/* <div className="flex gap-2">
           <Button>Default</Button>
@@ -47,12 +47,11 @@ export function Hero() {
           <Button size="icon-xs"><IconHome size={16} stroke="1.5" className="" /></Button>
         </div> */}
 
-        <div className="pt-[66px] pb-[110px]">
+        <div className="pt-12 pb-24">
           {/* Open to work badge */}
           <div
-            className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.04em] border rounded-[3px] px-2.5 py-1 mb-8"
+            className="inline-flex items-center gap-2 border rounded-[3px] px-2.5 py-1 "
             style={{
-              color: "var(--text)",
               borderColor: "var(--border-strong)",
               background: "var(--tag-bg)",
             }}
@@ -61,15 +60,13 @@ export function Hero() {
               className="w-2 h-2 rounded-full"
               style={{ background: "var(--green-dot)" }}
             />
-            open to work · remote friendly
+            <Typography variant="mono" size="sm" as="span">
+              open to work · remote friendly
+            </Typography>
           </div>
 
           {/* Headline */}
-          <h1
-              className="w-full text-[40px] md:text-[44px] font-medium leading-[1.1] tracking-[-0.025em] mb-4"
-                style={{ color: "var(--text)" }}
-
-            >
+          <Typography variant="heading" size="h1" weight="medium" as="h1" className="w-full mt-6 mb-8" style={{lineHeight:1.0}}>
             Frontend engineer
             <br />
             <em
@@ -80,54 +77,49 @@ export function Hero() {
             </em>
             <br />
             design systems.
-          </h1>
+          </Typography>
 
           {/* Subheadline */}
-          <p
-            className="text-[15px] leading-[1.75] max-w-125 mb-9"
-            style={{ color: "var(--text-muted)" }}
-          >
-            I build the layer between design and code — scalable component
+          <Typography variant="body" size="sm" className="max-w-125 mb-9" style={{lineHeight:1.3}}>
+            I build the layer between design and code.
+            <br /> Scalable component
             libraries, consistent UI systems, and the tooling that keeps teams
             moving.
-          </p>
+          </Typography>
 
           {/* CTAs */}
-          <div className="flex gap-2.5 mb-12.5">
-            <Button asChild size="lg" className="py-2 px-8">
-                <a href="/otri-cv.pdf" download>Download CV</a>
+          <div className="flex flex-col md:flex-row gap-2.5 mb-12.5">
+            <Button asChild size="lg" className="py-4 px-12">
+                <a href="/OtrinandaGandhi_CV_March_2026.pdf" download>Download CV</a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="py-2 px-8">
+            <Button asChild variant="outline" size="lg" className="py-4 px-12">
                 <Link href="/#projects">
                 View projects →
                 </Link>
             </Button>
 
           </div>
-          {/* Stats */}
           <DimLine label="stats" />
-          <div
-            className="grid grid-cols-1 md:grid-cols-3 border border-1 rounded-[3px] overflow-hidden bg-primary-foreground/70 border-border divide-y-1 md:divide-x-1 divide-border"
-          >
+          <div className="relative flex flex-col md:flex-row items-stretch rounded-lg overflow-hidden bg-primary-foreground/70">
             {[
               { value: "150+", label: "components shipped"   },
               { value: "3",    label: "teams · Breadboard UI" },
-              { value: "4 yrs", label: "frontend experience"  },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="flex-1 px-7 py-4"
-                // style={{
-                //   borderRight:
-                //     i < arr.length - 1 ? "1px solid var(--border)" : "none",
-                // }}
-              >
-                <Typography variant="body" size="lg">{stat.value}</Typography>
-                <Typography variant="mono" size="md" className="">{stat.label}</Typography>
+              { value: "5 yrs", label: "frontend experience"  },
+            ].map((stat, i, arr) => (
+              <div key={stat.label} className="contents">
+                <div className="flex-1 px-7 py-4">
+                  <Typography variant="body" size="md">{stat.value}</Typography>
+                  <Typography variant="mono" size="sm">{stat.label}</Typography>
+                </div>
+                {i < arr.length - 1 && (
+                  <>
+                    <Separator className="md:hidden" opacity={0.2} />
+                    <Separator orientation="vertical" className="hidden md:inline-block" opacity={0.2} />
+                  </>
+                )}
               </div>
             ))}
-                        <CornerMark />
-            
+            <CornerMark size={20} radius="4px" />
           </div>
         </div>
       </div>

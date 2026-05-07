@@ -10,7 +10,7 @@ export function DimLine({ label }: { label: string }) {
         className="block h-px w-5"
         style={{ background: "var(--border)" }}
       />
-      <Typography variant="body" size="lg" className="!font-mono !uppercase">{label}</Typography>
+      <Typography variant="body" size="md" className="!font-mono !uppercase">{label}</Typography>
       <span
         className="flex-1 h-px"
         style={{ background: "var(--border)" }}

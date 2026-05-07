@@ -1,5 +1,7 @@
 "use client";
 
+import { Typography } from "@/components/ui/Typography";
+
 export function SectionLabel({
   num,
   label,
@@ -9,18 +11,12 @@ export function SectionLabel({
 }) {
   return (
     <div className="flex items-center gap-2.5 mb-6">
-      <span
-        className="font-mono text-[10px] tracking-widest uppercase"
-        style={{ color: "var(--text-muted)" }}
-      >
+      <Typography variant="label" size="lg" muted as="span">
         {num} —
-      </span>
-      <span
-        className="font-mono text-[10px] tracking-widest uppercase"
-        style={{ color: "var(--text-dim)" }}
-      >
+      </Typography>
+      <Typography variant="label" size="lg" dim as="h2" className="uppercase">
         {label}
-      </span>
+      </Typography>
       <span
         className="flex-1 h-px"
         style={{ background: "var(--border)" }}

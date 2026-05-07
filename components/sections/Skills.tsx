@@ -13,12 +13,12 @@ export function Skills() {
     {
       label: "tooling",
       tags: ["Turborepo", "pnpm", "Storybook", "Vite"],
-      variant: "default" as const,
+      variant: "core" as const,
     },
     {
       label: "specialty",
       tags: ["Design Systems", "Atomic Design", "Design Tokens", "WCAG 2.1"],
-      variant: "default" as const,
+      variant: "core" as const,
     },
   ];
  
@@ -36,7 +36,7 @@ export function Skills() {
             </div>
             <div className="flex flex-wrap gap-1.5">
               {g.tags.map((t) => (
-                <Tag key={t} variant={g.variant}>{t}</Tag>
+                <Tag key={t} variant={g.variant} size="lg">{t}</Tag>
               ))}
             </div>
           </div>

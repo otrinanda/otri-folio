@@ -2,52 +2,47 @@
 
 import { experiences } from "@/data/experience";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { Typography } from "@/components/ui/Typography";
+import { Separator } from "../ui/Separator";
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-[52px]" style={{ borderTop: "1px solid var(--border)" }}>
+    <section id="experience" className="pb-14">
+      <Separator className="mb-14"/>
       <SectionLabel num="04" label="experience" />
       <div className="flex flex-col">
         {experiences.map((exp, i) => (
+          <>
+          
           <div
             key={exp.company}
-            className="grid gap-x-5 py-5 grid-1 md:grid-cols-[144px_1fr]"
-            style={{
-              // gridTemplateColumns: "144px 1fr",
-              borderBottom: i < experiences.length - 1 ? "1px solid var(--border)" : "none",
-            }}
+            className="grid gap-4 py-5 grid-1 md:grid-cols-[144px_1fr]"
           >
             {/* Left — period */}
-            <div
-              className="font-mono text-[11px] leading-relaxed pt-0.5"
-              style={{ color: "var(--text-dim)" }}
-            >
-              {exp.period}
-              <br />
-              {exp.location}
+            <div className="pt-0.5 gap-2 md:gap-4 flex flex-row md:flex-col md:justify-start justify-between items-start">
+              <Typography variant="mono" size="sm" dim as="div">{exp.period}</Typography>
+              <Typography variant="mono" size="sm" muted as="div">{exp.location}</Typography>
             </div>
- 
+
             {/* Right — content */}
             <div>
-              <div className="text-[13px] font-medium mb-0.5" style={{ color: "var(--text)" }}>
-                {exp.company}
+              <div className="flex flex-col md:flex-row gap-2 md:gap-4 md:items-center justify-between mb-2">
+                <Typography variant="mono" size="md" weight="medium" className="">{exp.company}</Typography>
+                <Typography variant="mono" size="sm" muted className="opacity-80">{exp.role}</Typography>
               </div>
-              <div
-                className="font-mono text-[11px] mb-2.5 opacity-80"
-                style={{ color: "var(--text-muted)" }}
-              >
-                {exp.role}
-              </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-4">
                 {exp.highlights.slice(0, 3).map((h) => (
-                  <div key={h} className="flex gap-2 text-[12px] leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                    <span className="font-mono" style={{ color: "var(--text-dim)", flexShrink: 0 }}>—</span>
-                    {h}
+                  <div key={h} className="flex gap-2 items-start">
+                    <div className="h-2 w-2 rounded-full bg-text-muted shrink-0 mt-2 md:mt-3"></div>
+                    {/* <Typography variant="mono" size="sm" dim as="span" style={{ flexShrink: 0 }}>—</Typography> */}
+                    <Typography variant="body" size="sm" muted>{h}</Typography>
                   </div>
                 ))}
               </div>
             </div>
           </div>
+            {i < experiences.length - 1 && <Separator key={`separator-${i}`} className="my-4" />}
+          </>
         ))}
       </div>
     </section>

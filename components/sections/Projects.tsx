@@ -5,6 +5,7 @@ import { projects } from "@/data/projects";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { CornerMark } from "@/components/ui/CornerMark";
 import { Tag } from "@/components/ui/Tag";
+import { Typography } from "@/components/ui/Typography";
 
  
 export function Projects() {
@@ -12,12 +13,10 @@ export function Projects() {
     <section id="projects" className="py-[52px]" style={{ borderTop: "1px solid var(--border)" }}>
       <div className="flex justify-between items-baseline mb-6">
         <SectionLabel num="03" label="featured projects" />
-        <Link
-          href="/projects"
-          className="font-mono text-[12px]"
-          style={{ color: "var(--text-dim)" }}
-        >
-          see all →
+        <Link href="/projects">
+          <Typography variant="mono" size="sm" dim >
+            see all →
+          </Typography>
         </Link>
       </div>
  
@@ -26,33 +25,30 @@ export function Projects() {
           <Link
             key={p.slug}
             href={`/projects/${p.slug}`}
-            className="relative block rounded-[3px] border p-[18px] transition-all duration-200"
+            className="relative block rounded-[3px] border p-4 transition-all duration-200"
             style={{
-              borderColor: p.slug === "breadboard-ui" ? "var(--border-strong)" : "var(--border)",
+              borderColor: "var(--border-strong)",
               background: "var(--card-bg)",
             }}
             onMouseEnter={(e) =>
-              (e.currentTarget.style.borderColor = "var(--border-strong)")
+              (e.currentTarget.style.borderColor = "var(--border-border)")
             }
             onMouseLeave={(e) =>
-              (e.currentTarget.style.borderColor =
-                p.slug === "breadboard-ui" ? "var(--border-strong)" : "var(--border)")
+              (e.currentTarget.style.borderColor = "var(--border-strong)")
             }
           >
-            {p.slug === "breadboard-ui" && <CornerMark />}
+            <CornerMark size={16} />
  
             <div className="flex justify-between items-start mb-2">
-              <span className="text-[13px] font-medium" style={{ color: "var(--text)" }}>
-                {p.name}
-              </span>
+              <Typography variant="mono" size="md" weight="medium">{p.name}</Typography>
               {p.isOpenSource && <Tag variant="os">open source</Tag>}
             </div>
  
-            <p className="text-[12px] leading-[1.65] mb-3.5" style={{ color: "var(--text-muted)" }}>
+            <Typography variant="body" size="sm" muted className="mb-4">
               {p.tagline}
-            </p>
+            </Typography>
  
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-4">
               {p.stack.slice(0, 4).map((t) => (
                 <Tag key={t} variant="default">{t}</Tag>
               ))}

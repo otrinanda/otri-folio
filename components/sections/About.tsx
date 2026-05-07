@@ -2,55 +2,53 @@
 
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { CornerMark } from "@/components/ui/CornerMark";
+import { Typography } from "@/components/ui/Typography";
  
 export function About() {
   return (
-    <section id="about" className="py-[52px]" style={{ borderTop: "1px solid var(--border)" }}>
+    <section id="about" className="py-16" style={{ borderTop: "1px solid var(--border)" }}>
       <SectionLabel num="01" label="about" />
-      <div className="grid grid-1 md:grid-cols-[1fr_176px] gap-11">
+      <div className="grid grid-1 md:grid-cols-[3fr_1fr] gap-8">
         {/* Bio */}
-        <div className="text-[14px] leading-[1.8]" style={{ color: "var(--text-muted)" }}>
-          <p className="mb-3">
+        <div className="flex flex-col gap-3">
+          <Typography variant="body" size="lg" muted>
             I`m Otri — a frontend developer based in Jakarta with a focus on
             design systems and component architecture.
-          </p>
-          <p className="mb-3">
+          </Typography>
+          <Typography variant="body" size="lg" muted>
             My best work happens at the intersection of engineering discipline
             and design sensibility: building systems that are easy to use, hard
             to misuse, and a pleasure to contribute to.
-          </p>
-          <p>
+          </Typography>
+          <Typography variant="body" size="lg" muted>
             Currently leading the FE Utils team at Hyperscal, building
             Breadboard UI on the side, and writing about frontend craft for
             developers who care about the details.
-          </p>
+          </Typography>
         </div>
  
         {/* Side meta */}
         <div>
           <div
-            className="relative w-[54px] h-[54px] rounded-[3px] flex items-center justify-center font-mono text-[15px] mb-4 border"
+            className="relative w-16 h-16 rounded-lg flex items-center justify-center mb-4 border"
             style={{
               borderColor: "var(--border-strong)",
               background: "var(--card-bg)",
-              color: "var(--text)",
             }}
           >
-            OG
-            <CornerMark />
+            <Typography variant="mono" size="md">OG</Typography>
+            <CornerMark radius="4px"/>
           </div>
           <div className="flex flex-col gap-1.5">
             {[
               { key: "loc",   val: "Jakarta, ID"    },
-              { key: "avail", val: "~May 2026"      },
+              { key: "avail", val: "June 2026"      },
               { key: "edu",   val: "Telkom Univ."   },
               { key: "focus", val: "Design Systems" },
             ].map((row) => (
-              <div key={row.key} className="font-mono text-[11px]" style={{ color: "var(--text-dim)" }}>
-                {row.key}
-                <span className="ml-1" style={{ color: "var(--text-muted)" }}>
-                  {row.val}
-                </span>
+              <div key={row.key} className="grid grid-cols-6 gap-4">
+                <Typography variant="mono" size="md" dim className="col-span-2">{row.key}</Typography>
+                <Typography variant="mono" size="md" muted className="col-span-4">{row.val}</Typography>
               </div>
             ))}
           </div>

@@ -15,7 +15,7 @@ export default function Home() {
 
       {/* Middle — clean, no grid */}
       <div style={{ background: "var(--body-bg)" }}>
-        <div className="max-w-240 mx-auto px-20">
+        <div className="max-w-360 mx-auto px-8">
           <About />
           <Skills />
           <Projects />
