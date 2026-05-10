@@ -1,6 +1,7 @@
 "use client";
 
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { Typography } from "@/components/ui/Typography";
 
 export function Writing() {
   const articles = [
@@ -22,9 +23,7 @@ export function Writing() {
     <section id="writing" className="py-[52px]" style={{ borderTop: "1px solid var(--border)" }}>
       <div className="flex justify-between items-baseline mb-6">
         <SectionLabel num="05" label="writing" />
-        <a className="font-mono text-[12px]" style={{ color: "var(--text-dim)" }} href="#">
-          see all →
-        </a>
+        <Typography variant="mono" size="sm" dim as="a">see all →</Typography>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
         {articles.map((a) => (
@@ -40,21 +39,15 @@ export function Writing() {
               (e.currentTarget.style.borderColor = "var(--border)")
             }
           >
-            <div
-              className="font-mono text-[9px] uppercase tracking-[0.08em] mb-2"
-              style={{ color: "var(--text-dim)" }}
-            >
+            <Typography variant="label" size="sm" dim className="mb-2 block">
               {a.platform}
-            </div>
-            <div
-              className="text-[13px] font-medium leading-[1.4] mb-2"
-              style={{ color: "var(--text)" }}
-            >
+            </Typography>
+            <Typography variant="mono" size="md" weight="medium" className="mb-2 block" style={{ lineHeight: "1.4" }}>
               {a.title}
-            </div>
-            <div className="font-mono text-[10px]" style={{ color: "var(--text-dim)" }}>
+            </Typography>
+            <Typography variant="mono" size="sm" dim>
               {a.meta}
-            </div>
+            </Typography>
           </a>
         ))}
       </div>

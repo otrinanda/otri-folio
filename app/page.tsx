@@ -6,10 +6,12 @@ import { ExperienceSection} from "@/components/sections/Experience";
 import { Writing }          from "@/components/sections/Writing";
 import { Contact }          from "@/components/sections/Contact";
 import { Footer }           from "@/components/layout/Footer";
+import { StickyNavbar }     from "@/components/layout/StickyNavbar";
 
 export default function Home() {
   return (
     <main>
+      <StickyNavbar />
       {/* Hero — grid visible */}
       <Hero />
 
