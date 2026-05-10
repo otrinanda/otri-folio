@@ -12,6 +12,7 @@ import { Separator } from "../ui/Separator";
 export function Hero() {
   return (
     <div
+      id="hero"
       className="relative overflow-hidden md:h-[95vh]"
       style={{ background: "var(--mat)" }}
     >

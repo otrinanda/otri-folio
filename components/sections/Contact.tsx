@@ -2,6 +2,7 @@
 
 import { GridBackground } from "@/components/ui/GridBackground";
 import { CornerMark } from "@/components/ui/CornerMark";
+import { Typography } from "@/components/ui/Typography";
  
 export function Contact() {
   return (
@@ -23,47 +24,35 @@ export function Contact() {
  
       <div className="relative z-[3] max-w-[860px] mx-auto px-8 py-[72px]">
         <div
-          className="relative border rounded-[3px] px-10 py-[50px] text-center"
+          className="relative border rounded-[3px] px-10 py-[50px] text-center bg-primary-foreground/70"
           style={{
             borderColor: "var(--border-strong)",
-            background: "var(--card-bg)",
+            // background: "var(--card-bg)",
           }}
         >
           <CornerMark />
  
           {/* Coordinate annotations */}
-          <span
-            className="absolute top-2 left-3 font-mono text-[9px] opacity-40 tracking-[0.04em]"
-            style={{ color: "var(--text-dim)" }}
-          >
+          <Typography variant="mono" size="sm" dim className="absolute top-2 left-3 opacity-40">
             x: 0.00 · y: 0.00
-          </span>
-          <span
-            className="absolute bottom-2 right-3 font-mono text-[9px] opacity-40 tracking-[0.04em]"
-            style={{ color: "var(--text-dim)" }}
-          >
+          </Typography>
+          <Typography variant="mono" size="sm" dim className="absolute bottom-2 right-3 opacity-40">
             ref: otri.dev/contact
-          </span>
+          </Typography>
  
-          <h2
-            className="text-[27px] font-medium leading-[1.2] tracking-[-0.02em] mb-2.5"
-            style={{ color: "var(--text)" }}
-          >
+          <Typography variant="heading" size="h2" weight="medium" as="h2" className="mb-2.5">
             Looking for a design
             <br />
             system engineer?
-          </h2>
-          <p
-            className="text-[13px] mb-8"
-            style={{ color: "var(--text-muted)" }}
-          >
-            Available for full-time roles from late May 2026. Remote-friendly,
+          </Typography>
+          <Typography variant="body" size="sm" muted className="mb-8">
+            Available for full-time roles from late June 2026. Remote-friendly,
             open to relocation.
-          </p>
+          </Typography>
  
           <div className="flex justify-center gap-2.5 flex-wrap">
             <a
-              href="mailto:your@email.com"
+              href="mailto:otrinanda31@gmail.com"
               className="font-mono text-[11px] px-4 py-[7px] rounded-[3px] transition-opacity duration-200 hover:opacity-85"
               style={{
                 background: "var(--text)",
@@ -74,9 +63,9 @@ export function Contact() {
               send an email
             </a>
             {[
-              { label: "linkedin", href: "https://linkedin.com/in/yourhandle" },
+              { label: "linkedin", href: "https://linkedin.com/in/otrinanda-gandhi/" },
               { label: "github",   href: "https://github.com/otrinanda"      },
-              { label: "download cv", href: "/otri-cv.pdf"                   },
+              { label: "download cv", href: "/OtrinandaGandhi_CV_March_2026.pdf" },
             ].map((l) => (
               <a
                 key={l.label}

@@ -12,10 +12,9 @@ export function ExperienceSection() {
       <SectionLabel num="04" label="experience" />
       <div className="flex flex-col">
         {experiences.map((exp, i) => (
-          <>
+          <div key={exp.company}>
           
           <div
-            key={exp.company}
             className="grid gap-4 py-5 grid-1 md:grid-cols-[144px_1fr]"
           >
             {/* Left — period */}
@@ -42,7 +41,7 @@ export function ExperienceSection() {
             </div>
           </div>
             {i < experiences.length - 1 && <Separator key={`separator-${i}`} className="my-4" />}
-          </>
+          </div>
         ))}
       </div>
     </section>
